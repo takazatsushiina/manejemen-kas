@@ -1,0 +1,229 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+    /* Custom Colors */
+    --color-primary-50: oklch(0.97 0.02 272);
+    --color-primary-100: oklch(0.93 0.03 272);
+    --color-primary-200: oklch(0.87 0.07 274);
+    --color-primary-300: oklch(0.79 0.12 275);
+    --color-primary-400: oklch(0.67 0.18 277);
+    --color-primary-500: oklch(0.59 0.23 277);
+    --color-primary-600: oklch(0.51 0.26 277);
+    --color-primary-700: oklch(0.46 0.24 277);
+    --color-primary-800: oklch(0.40 0.20 277);
+    --color-primary-900: oklch(0.36 0.14 279);
+    --color-primary-950: oklch(0.26 0.09 281);
+}
+
+/* Custom Base Styles */
+@layer base {
+    body {
+        @apply antialiased bg-slate-50 text-slate-900;
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+        @apply bg-slate-100;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        @apply bg-slate-300 rounded-full;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        @apply bg-slate-400;
+    }
+}
+
+/* Custom Component Styles */
+@layer components {
+
+    /* Card */
+    .card {
+        @apply bg-white rounded-xl shadow-sm border border-slate-200/80;
+    }
+
+    .card-header {
+        @apply px-5 py-4 border-b border-slate-100 font-semibold text-slate-800;
+    }
+
+    .card-body {
+        @apply p-5;
+    }
+
+    /* Stat Card */
+    .stat-card {
+        @apply bg-white rounded-xl p-5 shadow-sm border border-slate-200/80 transition-all duration-200 hover:shadow-md hover:-translate-y-0.5;
+    }
+
+    /* Form Inputs */
+    .form-input {
+        @apply w-full px-4 py-2.5 rounded-lg border border-slate-200 bg-white text-slate-900 placeholder:text-slate-400 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500;
+    }
+
+    .form-select {
+        @apply w-full px-4 py-2.5 rounded-lg border border-slate-200 bg-white text-slate-900 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500;
+    }
+
+    .form-label {
+        @apply block text-sm font-medium text-slate-700 mb-1.5;
+    }
+
+    /* Buttons - Base styles inlined to avoid @apply circular reference in Tailwind v4 */
+    .btn-primary {
+        @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg font-medium text-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed bg-gradient-to-r from-primary-600 to-primary-700 text-white hover:from-primary-700 hover:to-primary-800 focus:ring-primary-500 shadow-sm hover:shadow-md;
+    }
+
+    .btn-secondary {
+        @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg font-medium text-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed bg-slate-100 text-slate-700 hover:bg-slate-200 focus:ring-slate-400;
+    }
+
+    .btn-success {
+        @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg font-medium text-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed bg-gradient-to-r from-emerald-500 to-emerald-600 text-white hover:from-emerald-600 hover:to-emerald-700 focus:ring-emerald-500 shadow-sm;
+    }
+
+    .btn-danger {
+        @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg font-medium text-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed bg-gradient-to-r from-red-500 to-red-600 text-white hover:from-red-600 hover:to-red-700 focus:ring-red-500 shadow-sm;
+    }
+
+    .btn-warning {
+        @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg font-medium text-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed bg-gradient-to-r from-amber-500 to-amber-600 text-white hover:from-amber-600 hover:to-amber-700 focus:ring-amber-500 shadow-sm;
+    }
+
+    .btn-outline {
+        @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg font-medium text-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed border border-slate-300 bg-white text-slate-700 hover:bg-slate-50 focus:ring-slate-400;
+    }
+
+    .btn-outline-primary {
+        @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg font-medium text-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed border border-primary-300 bg-white text-primary-700 hover:bg-primary-50 focus:ring-primary-400;
+    }
+
+    .btn-sm {
+        @apply px-3 py-1.5 text-xs;
+    }
+
+    .btn-icon {
+        @apply p-2 rounded-lg;
+    }
+
+    /* Badge - Base styles inlined */
+    .badge {
+        @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium;
+    }
+
+    .badge-success {
+        @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700;
+    }
+
+    .badge-danger {
+        @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-red-50 text-red-700;
+    }
+
+    .badge-warning {
+        @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-amber-50 text-amber-700;
+    }
+
+    .badge-primary {
+        @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-primary-50 text-primary-700;
+    }
+
+    .badge-secondary {
+        @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-slate-100 text-slate-700;
+    }
+
+    /* Table */
+    .table-wrapper {
+        @apply bg-white rounded-xl shadow-sm border border-slate-200/80 overflow-hidden;
+    }
+
+    .data-table {
+        @apply w-full text-sm;
+    }
+
+    .data-table thead {
+        @apply bg-slate-50 border-b border-slate-200;
+    }
+
+    .data-table th {
+        @apply px-5 py-3 text-left text-xs font-semibold text-slate-600 uppercase tracking-wide;
+    }
+
+    .data-table td {
+        @apply px-5 py-4 text-slate-700;
+    }
+
+    .data-table tbody tr {
+        @apply border-b border-slate-100 last:border-0 transition-colors hover:bg-slate-50;
+    }
+
+    /* Alerts - Base styles inlined */
+    .alert-success {
+        @apply flex items-start gap-3 p-4 rounded-xl text-sm bg-emerald-50 text-emerald-800 border border-emerald-200;
+    }
+
+    .alert-danger {
+        @apply flex items-start gap-3 p-4 rounded-xl text-sm bg-red-50 text-red-800 border border-red-200;
+    }
+
+    .alert-warning {
+        @apply flex items-start gap-3 p-4 rounded-xl text-sm bg-amber-50 text-amber-800 border border-amber-200;
+    }
+
+    .alert-info {
+        @apply flex items-start gap-3 p-4 rounded-xl text-sm bg-sky-50 text-sky-800 border border-sky-200;
+    }
+
+    /* Sidebar Nav */
+    .nav-section {
+        @apply px-4 py-2 text-[10px] font-semibold text-slate-400 uppercase tracking-wider mt-6 first:mt-2;
+    }
+
+    .nav-link {
+        @apply flex items-center gap-3 px-4 py-2.5 text-sm text-slate-400 rounded-lg mx-2 transition-all duration-200 hover:bg-slate-800 hover:text-white;
+    }
+
+    .nav-link.active {
+        @apply bg-primary-600/20 text-white border-l-2 border-primary-400 -ml-0.5;
+    }
+
+    .nav-link svg {
+        @apply w-5 h-5 shrink-0;
+    }
+
+    /* Avatar */
+    .avatar {
+        @apply w-10 h-10 rounded-full bg-gradient-to-br from-primary-500 to-primary-700 flex items-center justify-center text-white font-semibold text-sm;
+    }
+
+    .avatar-sm {
+        @apply w-8 h-8 text-xs;
+    }
+
+    /* Empty State */
+    .empty-state {
+        @apply text-center py-12 text-slate-500;
+    }
+
+    .empty-state svg {
+        @apply w-12 h-12 mx-auto mb-3 text-slate-300;
+    }
+}
+
+/* Custom Utilities */
+@layer utilities {
+    .text-gradient {
+        @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-cyan-500;
+    }
+}
